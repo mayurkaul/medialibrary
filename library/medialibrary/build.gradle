@@ -16,8 +16,8 @@ ext {
     developerName = 'Mayur Kaul'
     developerEmail = 'mayurkoul2002@gmail.com'
 
-    siteUrl = 'https://github.com/mayurkaul/MediaStore'
-    gitUrl = 'https://github.com/mayurkaul/MediaStore.git'
+    siteUrl = 'https://github.com/mayurkaul/medialibrary'
+    gitUrl = 'https://github.com/mayurkaul/medialibrary.git'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
@@ -64,3 +64,4 @@ dependencies {
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//run ./gradlew clean install bintrayUpload in your root dir to build and upload new version
