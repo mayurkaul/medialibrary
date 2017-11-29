@@ -1,0 +1,3 @@
+include ':app', ':medialibrary'
+project(':medialibrary').projectDir = new File(settingsDir, '../library/medialibrary')
+

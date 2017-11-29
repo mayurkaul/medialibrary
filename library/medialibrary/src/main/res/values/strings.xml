@@ -1,0 +1,59 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">MediaLibrary</string>
+    <string name="action_settings">Settings</string>
+    <string name="unit_mm">mm</string>
+
+    <!-- Title prompted for user to choose a photo item [CHAR LIMIT=20] -->
+    <string name="select_image">Select photo</string>
+    <!-- Title prompted for user to choose a video item [CHAR LIMIT=20] -->
+    <string name="select_video">Select video</string>
+    <!-- Title prompted for user to choose a media object [CHAR LIMIT=20] -->
+    <string name="select_item">Select item</string>
+    <!-- Title prompted for user to choose an album [CHAR LIMIT=20] -->
+    <string name="select_album">Select album</string>
+    <!-- Title prompted for user to choose a group [CHAR LIMIT=20] -->
+    <string name="select_group">Select group</string>
+
+    <!-- Used to format short video duration in Details dialog. minutes:seconds e.g. 00:30 -->
+    <string name="details_ms">%1$02d:%2$02d</string>
+    <!-- Used to format video duration in Details dialog. hours:minutes:seconds e.g. 0:21:30 -->
+    <string name="details_hms">%1$d:%2$02d:%3$02d</string>
+    <!-- Activity label. This might show up in the activity-picker -->
+    <string name="movie_view_label">Video player</string>
+    <!-- shown in the video player view while the video is being loaded, before it starts playing -->
+    <string name="loading_video">Loading video\u2026</string>
+    <string name="loading_image">Loading image\u2026</string>
+
+    <!-- The label for the folder contains pictures taken by the camera. [CHAR LIMIT=20]-->
+    <string name="folder_camera">Camera</string>
+    <!-- The label for the folder contains downloaded pictures. [CHAR LIMIT=20]-->
+    <string name="folder_download">Download</string>
+    <!-- The label for the folder contains pictures that was imported from an
+         external camera. [CHAR LIMIT=20]-->
+    <string name="folder_imported">Imported</string>
+    <!-- The label for the folder contains screenshot images. [CHAR LIMIT=20]-->
+    <string name="folder_screenshot">Screenshot</string>
+
+    <string name="set_label_local_albums">Local albums</string>
+
+    <string name="folder_edited_online_photos">Edited Online Photos</string>
+    <string name="no_location">No location</string>
+
+    <string name="no_connectivity">Some locations couldn\'t be identified due to network problems.</string>
+    <string name="untagged">Untagged</string>
+
+    <string name="size_below"><xliff:g id="size">%1$s</xliff:g> or below</string>
+    <!-- Label of a group of pictures. The size of each picture in this group is
+         more than a certain amount. The parameter is a string representation
+         of that amount, eg. "10MB".
+         [CHAR LIMIT=20]
+    -->
+    <string name="size_above"><xliff:g id="size">%1$s</xliff:g> or above</string>
+    <!-- Label of a group of pictures. The size of each picture in this group is
+         between two amounts. The parameters are string representations of the two
+         amounts, eg. "10MB", "100MB".
+         [CHAR LIMIT=20]
+    -->
+    <string name="size_between"><xliff:g id="min_size">%1$s</xliff:g> to <xliff:g id="max_size">%2$s</xliff:g></string>
+
+</resources>
