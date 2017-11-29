@@ -18,4 +18,5 @@ android:
     - extra-android-m2repository
     - addon-google_apis-google-$ANDROID_API_LEVEL
 script:
+    - cd sample
     - ./gradlew build check
