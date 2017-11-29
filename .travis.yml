@@ -19,4 +19,5 @@ android:
     - addon-google_apis-google-$ANDROID_API_LEVEL
 script:
     - cd sample
+    - - chmod +x gradlew
     - ./gradlew build check
