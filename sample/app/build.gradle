@@ -1,14 +1,6 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias 'release'
-            keyPassword 'ZSE$%RDX45'
-            storeFile file('/Users/mayurkaul/Documents/workspace/MIscWorkspace/DeviceInfo/keys/uploadkey.keystore')
-            storePassword 'ZSE$%RDX45'
-        }
-    }
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
@@ -24,7 +16,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
         }
     }
 }
@@ -42,5 +33,4 @@ dependencies {
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.google.android.gms:play-services-vision:9.0.0'
     implementation project(':medialibrary')
-
 }
