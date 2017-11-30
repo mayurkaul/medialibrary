@@ -76,6 +76,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
                         public void onPermissionsGranted(String[] permissions) throws SecurityException {
                             if (permissions.length == 2) {
                                 onSuccess();
+
                             }
                         }
                     })
