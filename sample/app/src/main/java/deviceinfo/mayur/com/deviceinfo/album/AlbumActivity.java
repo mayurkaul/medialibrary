@@ -47,6 +47,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
     private MediaSet mRootObject;
     private Path mPath;
     private String bucketType,filterType;
+    private String[] permissionArray = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
 
     private AdapterView.OnItemSelectedListener mMainItemSelected, mFilterItemSelected;
     private FaceDetector mFaceDetector;
@@ -59,32 +60,22 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
         mRecyclerView = findViewById(R.id.albumList);
         setupListeners();
         setupSpinner();
-        //checkPermissionAndSetupAlbum();
     }
 
     private void checkPermissionAndSetupAlbum(String... items) {
         if(mRequest==null) {
-            mRequest = new Permissive.Request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION)
-                    .withRationale(new Rationale() {
-                        @Override
-                        public void onShowRationale(Activity activity, String[] allowablePermissions, PermissiveMessenger messenger) {
+            mRequest = new Permissive.Request(permissionArray)
+                    .withRationale((activity, allowablePermissions, messenger) -> {
+
+                    })
+                    .whenPermissionsGranted(permissions -> {
+                        if (permissions.length == permissionArray.length) {
+                            onSuccess();
 
                         }
                     })
-                    .whenPermissionsGranted(new PermissionsGrantedListener() {
-                        @Override
-                        public void onPermissionsGranted(String[] permissions) throws SecurityException {
-                            if (permissions.length == 2) {
-                                onSuccess();
+                    .whenPermissionsRefused(permissions -> {
 
-                            }
-                        }
-                    })
-                    .whenPermissionsRefused(new PermissionsRefusedListener() {
-                        @Override
-                        public void onPermissionsRefused(String[] permissions) {
-
-                        }
                     });
             mRequest.execute(this);
         }
