@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Device Info</string>
     <string name="action_settings">Settings</string>
+    <string name="dialog_before_run_title">Required permission</string>
+    <string name="dialog_before_run_message">Required permission for Accessing the gallery and clusters.</string>
+    <string name="dialog_positive_button">Give permission</string>
 </resources>

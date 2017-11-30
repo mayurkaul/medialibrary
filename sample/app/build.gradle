@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -33,4 +37,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.google.android.gms:play-services-vision:9.0.0'
     implementation project(':medialibrary')
+    compile 'com.github.jksiezni.permissive:permissive:0.2'
 }

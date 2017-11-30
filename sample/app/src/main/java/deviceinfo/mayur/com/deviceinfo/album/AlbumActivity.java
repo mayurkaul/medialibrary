@@ -1,5 +1,10 @@
 package deviceinfo.mayur.com.deviceinfo.album;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +13,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.github.jksiezni.permissive.PermissionsGrantedListener;
+import com.github.jksiezni.permissive.PermissionsRefusedListener;
+import com.github.jksiezni.permissive.Permissive;
+import com.github.jksiezni.permissive.PermissiveMessenger;
+import com.github.jksiezni.permissive.Rationale;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.util.ArrayList;
@@ -26,6 +36,7 @@ import deviceinfo.mayur.medialibrary.util.ThreadPool;
 
 public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter.OnAlbumItemClickListener {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1211;
     private ThreadPool mThreadPool;
     private RecyclerView mRecyclerView;
     private DataManager mDataManager;
@@ -39,6 +50,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
 
     private AdapterView.OnItemSelectedListener mMainItemSelected, mFilterItemSelected;
     private FaceDetector mFaceDetector;
+    private Permissive.Action<Activity> mRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,38 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
         mRecyclerView = findViewById(R.id.albumList);
         setupListeners();
         setupSpinner();
+        //checkPermissionAndSetupAlbum();
+    }
+
+    private void checkPermissionAndSetupAlbum(String... items) {
+        if(mRequest==null) {
+            mRequest = new Permissive.Request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION)
+                    .withRationale(new Rationale() {
+                        @Override
+                        public void onShowRationale(Activity activity, String[] allowablePermissions, PermissiveMessenger messenger) {
+
+                        }
+                    })
+                    .whenPermissionsGranted(new PermissionsGrantedListener() {
+                        @Override
+                        public void onPermissionsGranted(String[] permissions) throws SecurityException {
+                            if (permissions.length == 2) {
+                                onSuccess();
+                            }
+                        }
+                    })
+                    .whenPermissionsRefused(new PermissionsRefusedListener() {
+                        @Override
+                        public void onPermissionsRefused(String[] permissions) {
+
+                        }
+                    });
+            mRequest.execute(this);
+        }
+    }
+
+    private void onSuccess() {
+        mRequest = null;
         setupAlbum(mPath);
     }
 
@@ -58,7 +102,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
                 String item = parent.getItemAtPosition(position).toString();
                 getPathByBucketType(item);
                 changePathByFilter(filterType);
-                setupAlbum(mPath);
+                checkPermissionAndSetupAlbum();
             }
 
             @Override
@@ -75,7 +119,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
                 String item = parent.getItemAtPosition(position).toString();
                 getPathByBucketType(bucketType);
                 changePathByFilter(item);
-                setupAlbum(mPath);
+                checkPermissionAndSetupAlbum();
 
             }
 
@@ -234,7 +278,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
         {
             getPathByBucketType(bucketType);
             changePathByFilter(filterType);
-            setupAlbum(mPath);
+            checkPermissionAndSetupAlbum();
         }
         else {
             super.onBackPressed();
