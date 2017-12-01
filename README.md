@@ -28,3 +28,5 @@ dependencies {
 And you are all set !!!
 
 Initialisation and usage of the library can be found in [Link to Wiki](https://github.com/mayurkaul/medialibrary/wiki/Initialisation)
+
+You can also have a look at the sample code in [Samples](https://github.com/mayurkaul/medialibrary/tree/master/sample)
