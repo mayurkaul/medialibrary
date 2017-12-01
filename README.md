@@ -5,7 +5,7 @@
 
 This library is inspired with the Album structure of the Android Gallery and has abstracted library to get the Albums Data structure for Photos, Videos or All based on the Clustering of Photos based on Album, time, location, Tag, Size, etc.
 
-![Example](images/img1.png)
+![Example](images/img1.gif)
 
 ## Installation ##
 
