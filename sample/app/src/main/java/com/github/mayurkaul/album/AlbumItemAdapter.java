@@ -1,13 +1,14 @@
-package deviceinfo.mayur.com.deviceinfo.album;
+package com.github.mayurkaul.album;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.mayurkaul.R;
+
 import java.util.ArrayList;
 
-import deviceinfo.mayur.com.deviceinfo.R;
 import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
 import deviceinfo.mayur.medialibrary.data.MediaItem;
 import deviceinfo.mayur.medialibrary.data.MediaSet;

@@ -1,4 +1,4 @@
-package deviceinfo.mayur.com.deviceinfo;
+package com.github.mayurkaul.album;
 
 import org.junit.Test;
 

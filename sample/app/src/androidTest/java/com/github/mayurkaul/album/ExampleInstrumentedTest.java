@@ -1,4 +1,4 @@
-package deviceinfo.mayur.com.deviceinfo;
+package com.github.mayurkaul.album;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("deviceinfo.mayur.com.deviceinfo", appContext.getPackageName());
+        assertEquals("com.github.mayurkaul.deviceinfo", appContext.getPackageName());
     }
 }

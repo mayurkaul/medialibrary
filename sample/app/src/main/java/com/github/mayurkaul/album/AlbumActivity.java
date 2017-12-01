@@ -1,10 +1,7 @@
-package deviceinfo.mayur.com.deviceinfo.album;
+package com.github.mayurkaul.album;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,17 +10,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.github.jksiezni.permissive.PermissionsGrantedListener;
-import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
-import com.github.jksiezni.permissive.PermissiveMessenger;
-import com.github.jksiezni.permissive.Rationale;
+import com.github.mayurkaul.R;
 import com.google.android.gms.vision.face.FaceDetector;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import deviceinfo.mayur.com.deviceinfo.R;
 import deviceinfo.mayur.medialibrary.data.ContentListener;
 import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
 import deviceinfo.mayur.medialibrary.data.DataManager;
@@ -36,7 +29,6 @@ import deviceinfo.mayur.medialibrary.util.ThreadPool;
 
 public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter.OnAlbumItemClickListener {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1211;
     private ThreadPool mThreadPool;
     private RecyclerView mRecyclerView;
     private DataManager mDataManager;

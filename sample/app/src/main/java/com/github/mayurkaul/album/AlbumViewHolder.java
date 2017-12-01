@@ -1,4 +1,4 @@
-package deviceinfo.mayur.com.deviceinfo.album;
+package com.github.mayurkaul.album;
 
 import android.graphics.Bitmap;
 import android.support.v7.widget.CardView;
@@ -7,7 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import deviceinfo.mayur.com.deviceinfo.R;
+import com.github.mayurkaul.R;
+
 import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
 import deviceinfo.mayur.medialibrary.data.MediaItem;
 import deviceinfo.mayur.medialibrary.data.MediaSet;
