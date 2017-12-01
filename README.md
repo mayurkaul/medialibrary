@@ -26,3 +26,5 @@ dependencies {
 }
 ```
 And you are all set !!!
+
+Initialisation and usage of the library can be found in [Link to Wiki](https://github.com/mayurkaul/medialibrary/wiki/Initialisation)
