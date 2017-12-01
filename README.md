@@ -28,3 +28,88 @@ dependencies {
 And you are all set !!!
 
 ## Usage ##
+
+Extend the main Activity in the following fashion
+
+```java
+public class DummyActivity extends DataCompatActivity {
+    public DummyActivity() {
+        super();
+    }
+
+    @Override
+    public ThreadPool getThreadPool() {
+        return null;
+    }
+
+    @Override
+    public DataManager getDataManager() {
+        return null;
+    }
+
+    @Override
+    public FaceDetector getFaceDetector() {
+        return null;
+    }
+
+    @Override
+    public ImageCacheService getImageCacheService() {
+        return null;
+    }
+}
+
+```
+
+To instantiate the return types for the above, use the following snippet
+
+```java
+@Override
+    public synchronized DataManager getDataManager() {
+        if (mDataManager == null) {
+            mDataManager = new DataManager(this);
+            mDataManager.initializeSourceMap();
+        }
+        return mDataManager;
+    }
+
+    @Override
+    public FaceDetector getFaceDetector() {
+        if (mFaceDetector == null) {
+            mFaceDetector = new FaceDetector.Builder(this)
+                    .setTrackingEnabled(false)
+                    .build();
+        }
+        return mFaceDetector;
+    }
+
+
+    @Override
+    public ImageCacheService getImageCacheService() {
+        // This method may block on file I/O so a dedicated lock is needed here.
+        synchronized (mLock) {
+            if (mImageCacheService == null) {
+                mImageCacheService = new ImageCacheService(this);
+            }
+            return mImageCacheService;
+        }
+    }
+
+    @Override
+    public synchronized ThreadPool getThreadPool() {
+        if (mThreadPool == null) {
+            mThreadPool = new ThreadPool();
+        }
+        return mThreadPool;
+    }
+```
+Since the whole methodology of this library is based on paths, you need to get the main rootObject containing the data structure and manipulation logic using the following
+
+```java
+mPath = Path.fromString(LocalAlbumSet.PATH_ALL.toString());
+```
+The options can be
+```
+LocalAlbumSet.PATH_IMAGE
+LocalAlbumSet.PATH_VIDEO
+LocalAlbumSet.PATH_ALL
+```
