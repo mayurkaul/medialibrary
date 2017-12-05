@@ -71,6 +71,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
 
     @Override
     public void onContentDirty() {
+        updateClusters();
         notifyContentChanged();
     }
 

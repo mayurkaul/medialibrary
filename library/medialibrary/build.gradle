@@ -10,7 +10,7 @@ ext {
 
     libraryDescription = 'A library to group your gallery albums data based on filters like location, size, and face'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.0.3'
 
     developerId = 'mayurkoul2002'
     developerName = 'Mayur Kaul'

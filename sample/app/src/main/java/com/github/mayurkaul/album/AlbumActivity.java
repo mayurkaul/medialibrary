@@ -75,7 +75,10 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
 
     private void onSuccess() {
         mRequest = null;
+        filterType = "CLUSTER BY TIME";
+        changePathByFilter(filterType);
         setupAlbum(mPath);
+
     }
 
     private void setupListeners() {
@@ -95,7 +98,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
             }
         };
 
-        filterType = "CLUSTER BY ALBUM";
+        filterType = "CLUSTER BY TIME";
         mFilterItemSelected = new AdapterView.OnItemSelectedListener() {
 
 
@@ -151,12 +154,7 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
     private void setupAlbum(Path path) {
         mPath = path;
         mRootObject = getDataManager().getMediaSet(path);
-        mRootObject.addContentListener(new ContentListener() {
-            @Override
-            public void onContentDirty() {
-                mAdapter.notifyDataSetChanged();
-            }
-        });
+        mRootObject.addContentListener(() -> mAdapter.notifyDataSetChanged());
         mAdapter = new AlbumSetAdapter(mRootObject, this,this);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.setAdapter(mAdapter);
