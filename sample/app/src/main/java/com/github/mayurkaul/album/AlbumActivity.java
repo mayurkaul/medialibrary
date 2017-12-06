@@ -2,7 +2,9 @@ package com.github.mayurkaul.album;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import deviceinfo.mayur.medialibrary.data.ContentListener;
-import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
+import deviceinfo.mayur.medialibrary.data.MediaDataContext;
 import deviceinfo.mayur.medialibrary.data.DataManager;
 import deviceinfo.mayur.medialibrary.data.ImageCacheService;
 import deviceinfo.mayur.medialibrary.data.LocalAlbumSet;
@@ -27,7 +29,7 @@ import deviceinfo.mayur.medialibrary.data.Path;
 import deviceinfo.mayur.medialibrary.util.FilterUtils;
 import deviceinfo.mayur.medialibrary.util.ThreadPool;
 
-public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter.OnAlbumItemClickListener {
+public class AlbumActivity extends AppCompatActivity implements MediaDataContext, AlbumSetAdapter.OnAlbumItemClickListener {
 
     private ThreadPool mThreadPool;
     private RecyclerView mRecyclerView;
@@ -239,6 +241,11 @@ public class AlbumActivity extends DataCompatActivity implements AlbumSetAdapter
             }
             return mImageCacheService;
         }
+    }
+
+    @Override
+    public Context getContext() {
+        return this.getApplicationContext();
     }
 
     @Override

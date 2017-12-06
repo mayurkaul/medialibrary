@@ -35,7 +35,7 @@ public class LocalAlbum extends MediaSet {
     private final Uri mBaseUri;
     private final String[] mProjection;
 
-    private final DataCompatActivity mApplication;
+    private final MediaDataContext mApplication;
     private final ContentResolver mResolver;
     private final int mBucketId;
     private final String mName;
@@ -44,7 +44,7 @@ public class LocalAlbum extends MediaSet {
     private final Path mItemPath;
     private int mCachedCount = INVALID_COUNT;
 
-    public LocalAlbum(Path path, DataCompatActivity application, int bucketId,
+    public LocalAlbum(Path path, MediaDataContext application, int bucketId,
                       boolean isImage, String name) {
         super(path, nextVersionNumber());
         mApplication = application;
@@ -72,7 +72,7 @@ public class LocalAlbum extends MediaSet {
         mNotifier = new ChangeNotifier(this, mBaseUri, application);
     }
 
-    public LocalAlbum(Path path, DataCompatActivity application, int bucketId,
+    public LocalAlbum(Path path, MediaDataContext application, int bucketId,
                       boolean isImage) {
         this(path, application, bucketId, isImage,
                 BucketHelper.getBucketName(
@@ -128,7 +128,7 @@ public class LocalAlbum extends MediaSet {
     }
 
     private static MediaItem loadOrUpdateItem(Path path, Cursor cursor,
-                                              DataManager dataManager, DataCompatActivity app, boolean isImage) {
+                                              DataManager dataManager, MediaDataContext app, boolean isImage) {
         synchronized (DataManager.LOCK) {
             LocalMediaItem item = (LocalMediaItem) dataManager.peekMediaObject(path);
             if (item == null) {
@@ -146,7 +146,7 @@ public class LocalAlbum extends MediaSet {
 
     // The pids array are sorted by the (path) id.
     public static MediaItem[] getMediaItemById(
-            DataCompatActivity application, boolean isImage, ArrayList<Integer> ids) {
+            MediaDataContext application, boolean isImage, ArrayList<Integer> ids) {
         // get the lower and upper bound of (path) id
         MediaItem[] result = new MediaItem[ids.size()];
         if (ids.isEmpty()) return result;
@@ -234,7 +234,7 @@ public class LocalAlbum extends MediaSet {
 
     @Override
     public String getName() {
-        return getLocalizedName(mApplication.getResources(), mBucketId, mName);
+        return getLocalizedName(mApplication.getContext().getResources(), mBucketId, mName);
     }
 
     @Override

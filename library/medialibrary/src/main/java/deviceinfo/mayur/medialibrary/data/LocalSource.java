@@ -17,7 +17,7 @@ class LocalSource extends MediaSource {
 
     public static final String KEY_BUCKET_ID = "bucketId";
 
-    private DataCompatActivity mApplication;
+    private MediaDataContext mApplication;
     private PathMatcher mMatcher;
     private static final int NO_MATCH = -1;
     private final UriMatcher mUriMatcher = new UriMatcher(NO_MATCH);
@@ -36,7 +36,7 @@ class LocalSource extends MediaSource {
 
     private ContentProviderClient mClient;
 
-    public LocalSource(DataCompatActivity context) {
+    public LocalSource(MediaDataContext context) {
         super("local");
         mApplication = context;
         mMatcher = new PathMatcher();
@@ -64,7 +64,7 @@ class LocalSource extends MediaSource {
 
     @Override
     public MediaObject createMediaObject(Path path) {
-        DataCompatActivity app = mApplication;
+        MediaDataContext app = mApplication;
         switch (mMatcher.match(path)) {
             case LOCAL_ALL_ALBUMSET:
             case LOCAL_IMAGE_ALBUMSET:

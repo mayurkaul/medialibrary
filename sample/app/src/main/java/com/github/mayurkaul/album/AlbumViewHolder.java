@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.github.mayurkaul.R;
 
-import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
+import deviceinfo.mayur.medialibrary.data.MediaDataContext;
 import deviceinfo.mayur.medialibrary.data.MediaItem;
 import deviceinfo.mayur.medialibrary.data.MediaSet;
 import deviceinfo.mayur.medialibrary.util.Future;
@@ -21,13 +21,13 @@ import deviceinfo.mayur.medialibrary.util.FutureListener;
 
 
 class AlbumViewHolder extends RecyclerView.ViewHolder {
-    private final DataCompatActivity mContext;
+    private final MediaDataContext mContext;
     private final TextView mText;
     public final CardView mParentView;
     private ImageView mImage;
     private AlbumSetAdapter.OnAlbumItemClickListener mListener;
 
-    public AlbumViewHolder(View itemView, DataCompatActivity context) {
+    public AlbumViewHolder(View itemView, MediaDataContext context) {
         super(itemView);
         mImage = itemView.findViewById(R.id.imageView);
         mText = itemView.findViewById(R.id.textDetails);

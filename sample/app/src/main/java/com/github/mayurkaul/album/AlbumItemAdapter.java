@@ -9,7 +9,7 @@ import com.github.mayurkaul.R;
 
 import java.util.ArrayList;
 
-import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
+import deviceinfo.mayur.medialibrary.data.MediaDataContext;
 import deviceinfo.mayur.medialibrary.data.MediaItem;
 import deviceinfo.mayur.medialibrary.data.MediaSet;
 
@@ -20,9 +20,9 @@ import deviceinfo.mayur.medialibrary.data.MediaSet;
 public class AlbumItemAdapter extends RecyclerView.Adapter<AlbumItemViewHolder> {
     private final MediaSet mSet;
     private final ArrayList<MediaItem> mItems;
-    private final DataCompatActivity mContext;
+    private final MediaDataContext mContext;
 
-    AlbumItemAdapter(MediaSet set, DataCompatActivity context)
+    AlbumItemAdapter(MediaSet set, MediaDataContext context)
     {
         mSet = set;
         mItems = mSet.getMediaItem(0,mSet.getMediaItemCount());

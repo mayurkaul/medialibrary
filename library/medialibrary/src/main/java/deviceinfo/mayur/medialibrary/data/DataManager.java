@@ -77,7 +77,7 @@ public class DataManager{
 
     private Handler mDefaultMainHandler;
 
-    private DataCompatActivity mApplication;
+    private MediaDataContext mApplication;
     private int mActiveCount = 0;
 
     private HashMap<Uri, NotifyBroker> mNotifierMap =
@@ -87,7 +87,7 @@ public class DataManager{
     private HashMap<String, MediaSource> mSourceMap =
             new LinkedHashMap<String, MediaSource>();
 
-    public DataManager(DataCompatActivity application) {
+    public DataManager(MediaDataContext application) {
         mApplication = application;
         mDefaultMainHandler = new Handler(application.getMainLooper());
     }

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.github.mayurkaul.R;
 
-import deviceinfo.mayur.medialibrary.data.DataCompatActivity;
+import deviceinfo.mayur.medialibrary.data.MediaDataContext;
 import deviceinfo.mayur.medialibrary.data.MediaSet;
 
 /**
@@ -17,10 +17,10 @@ import deviceinfo.mayur.medialibrary.data.MediaSet;
 class AlbumSetAdapter extends RecyclerView.Adapter<AlbumViewHolder> {
 
     private final MediaSet mSet;
-    private final DataCompatActivity mContext;
+    private final MediaDataContext mContext;
     private final OnAlbumItemClickListener mListener;
 
-    AlbumSetAdapter(MediaSet set, OnAlbumItemClickListener listener, DataCompatActivity context)
+    AlbumSetAdapter(MediaSet set, OnAlbumItemClickListener listener, MediaDataContext context)
     {
         mSet = set;
         mContext = context;

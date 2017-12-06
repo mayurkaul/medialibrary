@@ -30,7 +30,7 @@ public class LocalAlbumSet extends MediaSet
     private static final Uri[] mWatchUris =
             {Images.Media.EXTERNAL_CONTENT_URI, Video.Media.EXTERNAL_CONTENT_URI};
 
-    private final DataCompatActivity mApplication;
+    private final MediaDataContext mApplication;
     private final int mType;
     private ArrayList<MediaSet> mAlbums = new ArrayList<MediaSet>();
     private final ChangeNotifier mNotifier;
@@ -41,13 +41,13 @@ public class LocalAlbumSet extends MediaSet
     private Future<ArrayList<MediaSet>> mLoadTask;
     private ArrayList<MediaSet> mLoadBuffer;
 
-    public LocalAlbumSet(Path path, DataCompatActivity application) {
+    public LocalAlbumSet(Path path, MediaDataContext application) {
         super(path, nextVersionNumber());
         mApplication = application;
         mHandler = new Handler(application.getMainLooper());
         mType = getTypeFromPath(path);
         mNotifier = new ChangeNotifier(this, mWatchUris, application);
-        mName = application.getResources().getString(
+        mName = application.getContext().getResources().getString(
                 R.string.set_label_local_albums);
     }
 

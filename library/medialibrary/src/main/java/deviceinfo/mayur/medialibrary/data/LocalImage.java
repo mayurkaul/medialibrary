@@ -78,17 +78,17 @@ public class LocalImage extends LocalMediaItem {
         }
     }
 
-    private final DataCompatActivity mApplication;
+    private final MediaDataContext mApplication;
 
     public int rotation;
 
-    public LocalImage(Path path, DataCompatActivity application, Cursor cursor) {
+    public LocalImage(Path path, MediaDataContext application, Cursor cursor) {
         super(path, nextVersionNumber());
         mApplication = application;
         loadFromCursor(cursor);
     }
 
-    public LocalImage(Path path, DataCompatActivity application, int id) {
+    public LocalImage(Path path, MediaDataContext application, int id) {
         super(path, nextVersionNumber());
         mApplication = application;
         ContentResolver resolver = mApplication.getContentResolver();
@@ -162,7 +162,7 @@ public class LocalImage extends LocalMediaItem {
     public class LocalImageRequest extends ImageCacheRequest {
         private String mLocalFilePath;
 
-        LocalImageRequest(DataCompatActivity application, Path path, long timeModified,
+        LocalImageRequest(MediaDataContext application, Path path, long timeModified,
                           int type, String localFilePath) {
             super(application, path, timeModified, type,
                     MediaItem.getTargetSize(type));

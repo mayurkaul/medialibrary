@@ -13,12 +13,12 @@ public class ChangeNotifier {
     private MediaSet mMediaSet;
     private AtomicBoolean mContentDirty = new AtomicBoolean(true);
 
-    public ChangeNotifier(MediaSet set, Uri uri, DataCompatActivity application) {
+    public ChangeNotifier(MediaSet set, Uri uri, MediaDataContext application) {
         mMediaSet = set;
         application.getDataManager().registerChangeNotifier(uri, this);
     }
 
-    public ChangeNotifier(MediaSet set, Uri[] uris, DataCompatActivity application) {
+    public ChangeNotifier(MediaSet set, Uri[] uris, MediaDataContext application) {
         mMediaSet = set;
         for (int i = 0; i < uris.length; i++) {
             application.getDataManager().registerChangeNotifier(uris[i], this);

@@ -53,17 +53,17 @@ public class LocalVideo extends LocalMediaItem {
             VideoColumns.RESOLUTION,
     };
 
-    private final DataCompatActivity mApplication;
+    private final MediaDataContext mApplication;
 
     public int durationInSec;
 
-    public LocalVideo(Path path, DataCompatActivity application, Cursor cursor) {
+    public LocalVideo(Path path, MediaDataContext application, Cursor cursor) {
         super(path, nextVersionNumber());
         mApplication = application;
         loadFromCursor(cursor);
     }
 
-    public LocalVideo(Path path, DataCompatActivity context, int id) {
+    public LocalVideo(Path path, MediaDataContext context, int id) {
         super(path, nextVersionNumber());
         mApplication = context;
         ContentResolver resolver = mApplication.getContentResolver();
@@ -142,7 +142,7 @@ public class LocalVideo extends LocalMediaItem {
 
     public static class LocalVideoRequest extends ImageCacheRequest {
         private String mLocalFilePath;
-        LocalVideoRequest(DataCompatActivity application,Path path, long date, int type,
+        LocalVideoRequest(MediaDataContext application, Path path, long date, int type,
                           String localFilePath) {
             super(application, path, date, type, LocalImage.getTargetSize(type));
             mLocalFilePath = localFilePath;
@@ -207,7 +207,7 @@ public class LocalVideo extends LocalMediaItem {
         int s = durationInSec;
         if (s > 0) {
             details.addDetail(MediaDetails.INDEX_DURATION, GalleryUtils.formatDuration(
-                    mApplication, durationInSec));
+                    mApplication.getContext(), durationInSec));
         }
         return details;
     }

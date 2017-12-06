@@ -11,12 +11,12 @@ import deviceinfo.mayur.medialibrary.util.ThreadPool;
 
 abstract class ImageCacheRequest implements ThreadPool.Job<Bitmap> {
     private static final String TAG = "ImageCacheRequest";
-    protected DataCompatActivity mApplication;
+    protected MediaDataContext mApplication;
     private Path mPath;
     private int mType;
     private int mTargetSize;
     private long mTimeModified;
-    public ImageCacheRequest(DataCompatActivity application,
+    public ImageCacheRequest(MediaDataContext application,
                              Path path, long timeModified, int type, int targetSize) {
         mApplication = application;
         mPath = path;

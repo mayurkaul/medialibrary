@@ -29,10 +29,10 @@ class ClusterSource extends MediaSource {
     static final int CLUSTER_ALBUM_SIZE = 0x103;
     static final int CLUSTER_ALBUM_FACE = 0x104;
 
-    DataCompatActivity mApplication;
+    MediaDataContext mApplication;
     PathMatcher mMatcher;
 
-    public ClusterSource(DataCompatActivity application) {
+    public ClusterSource(MediaDataContext application) {
         super("cluster");
         mApplication = application;
         mMatcher = new PathMatcher();

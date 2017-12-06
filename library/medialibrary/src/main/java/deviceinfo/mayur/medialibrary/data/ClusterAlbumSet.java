@@ -25,13 +25,13 @@ import java.util.HashSet;
 public class ClusterAlbumSet extends MediaSet implements ContentListener {
     @SuppressWarnings("unused")
     private static final String TAG = "ClusterAlbumSet";
-    private DataCompatActivity mApplication;
+    private MediaDataContext mApplication;
     private MediaSet mBaseSet;
     private int mKind;
     private ArrayList<ClusterAlbum> mAlbums = new ArrayList<ClusterAlbum>();
     private boolean mFirstReloadDone;
 
-    public ClusterAlbumSet(Path path, DataCompatActivity application,
+    public ClusterAlbumSet(Path path, MediaDataContext application,
             MediaSet baseSet, int kind) {
         super(path, INVALID_DATA_VERSION);
         mApplication = application;
@@ -78,7 +78,7 @@ public class ClusterAlbumSet extends MediaSet implements ContentListener {
     private void updateClusters() {
         mAlbums.clear();
         Clustering clustering;
-        Context context = mApplication;
+        Context context = mApplication.getContext();
         switch (mKind) {
             case ClusterSource.CLUSTER_ALBUMSET_TIME:
                 clustering = new TimeClustering(context);
