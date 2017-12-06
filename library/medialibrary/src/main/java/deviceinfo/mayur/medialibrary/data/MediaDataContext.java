@@ -14,11 +14,11 @@ import deviceinfo.mayur.medialibrary.util.ThreadPool;
  */
 
 public interface MediaDataContext {
-    public abstract ThreadPool getThreadPool();
-    public abstract DataManager getDataManager();
-    public abstract FaceDetector getFaceDetector();
-    public abstract ImageCacheService getImageCacheService();
-    public abstract Looper getMainLooper();
-    public abstract ContentResolver getContentResolver();
-    public abstract Context getContext();
+    ThreadPool getThreadPool();
+    DataManager getDataManager();
+    FaceDetector getFaceDetector();
+    ImageCacheService getImageCacheService();
+    Looper getMainLooper();
+    ContentResolver getContentResolver();
+    Context getContext();
 }
