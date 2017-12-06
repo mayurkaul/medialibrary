@@ -9,20 +9,11 @@ This library is inspired with the Album structure of the Android Gallery and has
 
 ## Installation ##
 
-add mavencentral to all repositories of your root build.gradle file
-
-```gradle
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-```
-Then in your project's build gradle, add the following dependancy
+In your project's build gradle, add the following dependancy
 
 ```gradle
 dependencies {
-    compile 'com.github.mayurkaul:medialibrary:1.0.1'
+    compile 'com.github.mayurkaul:medialibrary:1.0.3'
 }
 ```
 And you are all set !!!
