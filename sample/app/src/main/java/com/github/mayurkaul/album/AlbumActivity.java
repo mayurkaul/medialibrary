@@ -77,10 +77,7 @@ public class AlbumActivity extends AppCompatActivity implements MediaDataContext
 
     private void onSuccess() {
         mRequest = null;
-        filterType = "CLUSTER BY TIME";
-        changePathByFilter(filterType);
         setupAlbum(mPath);
-
     }
 
     private void setupListeners() {
