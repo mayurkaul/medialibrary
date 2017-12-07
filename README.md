@@ -13,7 +13,7 @@ In your project's build gradle, add the following dependancy
 
 ```gradle
 dependencies {
-    compile 'com.github.mayurkaul:medialibrary:1.0.3'
+    compile 'com.github.mayurkaul:medialibrary:1.0.4'
 }
 ```
 And you are all set !!!
