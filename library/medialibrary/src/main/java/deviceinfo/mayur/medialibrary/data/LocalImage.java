@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
+import android.graphics.RectF;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,9 @@ import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Images.ImageColumns;
 import android.provider.MediaStore.MediaColumns;
 import android.util.Log;
+import android.util.SparseArray;
+
+import com.google.android.gms.vision.Frame;
 
 import java.io.File;
 import java.io.IOException;
@@ -289,22 +293,24 @@ public class LocalImage extends LocalMediaItem {
 
     @Override
     public Face[] getFaces() {
-//        if (mApplication.getFaceDetector().isOperational() && mFaces == null) {
-//            Frame frame = new Frame.Builder().setBitmap(mBitmap).build();
-//            SparseArray<com.google.android.gms.vision.face.Face> faces = mApplication.getFaceDetector().detect(frame);
-//            mFaces = new deviceinfo.mayur.com.deviceinfo.data.Face[faces.size()];
-//            for (int i=0;i<faces.size();i++){
-//                com.google.android.gms.vision.face.Face face = faces.get(i);
-//                RectF posRect = new RectF(face.getPosition().x,
-//                        face.getPosition().y,
-//                        face.getPosition().x + face.getWidth(),
-//                        face.getPosition().y + face.getHeight());
-//
-//                mFaces[i] = new deviceinfo.mayur.com.deviceinfo.data.Face(faces.get(i).getId()+"",faces.get(i).getId()+"",posRect);
-//            }
-//        }
-//
-//        return (mFaces!=null && mFaces.length>0)?mFaces:null;
-        return null;
+        if (mApplication.getFaceDetector().isOperational() && mFaces == null) {
+            Bitmap bitmap = mApplication.getThreadPool().submit(requestImage(MediaItem.TYPE_THUMBNAIL)).get();
+            Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+            SparseArray<com.google.android.gms.vision.face.Face> faces = mApplication.getFaceDetector().detect(frame);
+            mFaces = new Face[faces.size()];
+            for (int i=0;i<faces.size();i++){
+                int key = faces.keyAt(i);
+                com.google.android.gms.vision.face.Face face = faces.get(key);
+                RectF posRect = new RectF(face.getPosition().x,
+                        face.getPosition().y,
+                        face.getPosition().x + face.getWidth(),
+                        face.getPosition().y + face.getHeight());
+
+                mFaces[i] = new Face(face.getId()+"",face.getId()+"",posRect);
+            }
+        }
+
+        return (mFaces!=null && mFaces.length>0)?mFaces:null;
+//        return null;
     }
 }

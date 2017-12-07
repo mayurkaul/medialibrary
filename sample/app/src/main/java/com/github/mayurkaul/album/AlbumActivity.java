@@ -222,7 +222,7 @@ public class AlbumActivity extends AppCompatActivity implements MediaDataContext
     public FaceDetector getFaceDetector() {
         if (mFaceDetector == null) {
             mFaceDetector = new FaceDetector.Builder(this)
-                    .setTrackingEnabled(false)
+                    .setTrackingEnabled(true)
                     .build();
         }
         return mFaceDetector;
